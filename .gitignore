@@ -1,0 +1,16 @@
+# IntelliJ IDEA
+.idea/
+
+# Gradle
+.gradle/
+**/.gradle/
+
+# Gradle build output
+build/
+**/build/
+
+# Java
+*.class
+
+# OS files
+.DS_Store
