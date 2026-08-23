@@ -19,6 +19,10 @@ public class ProductServiceClient implements ProductClient {
 
     @Override
     public ProductResponse getProductPrice(UUID productId) {
-        return null;
+        return productServiceRestClient
+                .get()
+                .uri("/api/v1/products/{productId}", productId)
+                .retrieve()
+                .body(ProductResponse.class);
     }
 }
