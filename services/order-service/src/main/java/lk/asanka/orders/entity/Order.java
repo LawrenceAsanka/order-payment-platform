@@ -87,4 +87,8 @@ public class Order {
     public Instant getCreatedAt() {
         return createdAt;
     }
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
 }

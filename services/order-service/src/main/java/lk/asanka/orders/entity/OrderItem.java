@@ -42,4 +42,12 @@ public class OrderItem {
         this.quantity = quantity;
         this.unitPrice = unitPrice;
     }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public BigDecimal getUnitPrice() {
+        return unitPrice;
+    }
 }
