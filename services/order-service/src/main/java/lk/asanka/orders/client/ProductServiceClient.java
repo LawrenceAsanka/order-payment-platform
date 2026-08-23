@@ -1,7 +1,9 @@
 package lk.asanka.orders.client;
 
+import lk.asanka.orders.exception.ProductNotFoundException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClient;
 
 import java.util.UUID;
@@ -19,10 +21,14 @@ public class ProductServiceClient implements ProductClient {
 
     @Override
     public ProductResponse getProductPrice(UUID productId) {
-        return productServiceRestClient
-                .get()
-                .uri("/api/v1/products/{productId}", productId)
-                .retrieve()
-                .body(ProductResponse.class);
+        try {
+            return productServiceRestClient
+                    .get()
+                    .uri("/api/v1/products/{productId}", productId)
+                    .retrieve()
+                    .body(ProductResponse.class);
+        } catch (HttpClientErrorException.NotFound e) {
+            throw new ProductNotFoundException("Product not found: " + productId);
+        }
     }
 }
