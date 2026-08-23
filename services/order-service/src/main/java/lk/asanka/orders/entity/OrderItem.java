@@ -33,4 +33,13 @@ public class OrderItem {
     public void removeOrder(){
         this.order = null;
     }
+
+    public OrderItem() {
+    }
+
+    public OrderItem(UUID productId, Integer quantity, BigDecimal unitPrice) {
+        this.productId = productId;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+    }
 }

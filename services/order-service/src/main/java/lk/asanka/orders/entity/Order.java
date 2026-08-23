@@ -59,4 +59,32 @@ public class Order {
     public void preUpdate() {
         this.updatedAt = Instant.now();
     }
+
+    public void setTotalAmount(BigDecimal totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
+    }
+
+    public void setCustomerId(UUID customerId) {
+        this.customerId = customerId;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public BigDecimal getTotalAmount() {
+        return totalAmount;
+    }
+
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
 }
