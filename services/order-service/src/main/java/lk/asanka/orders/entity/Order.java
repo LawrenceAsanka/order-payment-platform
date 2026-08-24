@@ -91,4 +91,8 @@ public class Order {
     public List<OrderItem> getItems() {
         return items;
     }
+
+    public UUID getCustomerId() {
+        return customerId;
+    }
 }
