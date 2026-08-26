@@ -4,3 +4,25 @@ spring:
 
 product-service:
   base-url: http://localhost:8081
+
+resilience4j:
+  time-limiter:
+    instances:
+      productService:
+        timeout-duration:
+          seconds: 2
+  retry:
+    instances:
+      productService:
+        maxAttempts: 3
+        waitDuration: 500ms
+        ignore-exceptions:
+          - lk.asanka.orders.exception.ProductNotFoundException
+
+  circuit-breaker:
+    instances:
+      productService:
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+        permittedNumberOfCallsInHalfOpenState: 3

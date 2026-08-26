@@ -1,5 +1,7 @@
 package lk.asanka.orders.client;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 import lk.asanka.orders.exception.ProductNotFoundException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -19,6 +21,8 @@ public class ProductServiceClient implements ProductClient {
                 .build();
     }
 
+    @CircuitBreaker(name = "productService")
+    @Retry(name = "productService")
     @Override
     public ProductResponse getProductPrice(UUID productId) {
         try {
