@@ -41,7 +41,7 @@ public class ProductServiceClient implements ProductClient {
             return productServiceRestClient
                     .get()
                     .uri("/api/v1/products/{productId}", productId)
-                    .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+//                    .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
                     .retrieve()
                     .body(ProductResponse.class);
         } catch (HttpClientErrorException.NotFound e) {
