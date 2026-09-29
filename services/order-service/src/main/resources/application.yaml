@@ -2,6 +2,21 @@ spring:
   application:
     name: order-service
 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/order-service
+
+  datasource:
+    url: jdbc:h2:mem:orders
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+server:
+  port: 8081
+
 product-service:
   base-url: http://localhost:8081
 
